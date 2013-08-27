@@ -1,0 +1,128 @@
+rendmiento y gins de programación
+
+ejemplos
+
+OpenMP & MPI
+
+-- OpenMP --
+
+se puede entender como un lenguaje pero no es uno, sino es un conjunto de directivas, y esta basado en el modelo de memoria compartida.
+Lo que dice es que si en mi sistema tengo 4, 5, 6...n CPU, todos comparten la misma "memoria direccionable", esto es que puedo apuntar con una variable a un contenido de la memoria, esta memoria no es necesario la RAM, puede ser parte del HDD, esta memoria lo que hace es que cuando uno se termina la memoria pagina datos en la memoria RAM y cuando esta se llena, se mandan datos a la memoria SWAP que la que es parte del HDD.
+
+Esto tambien que involucra, hay memorias de distintas vlocidades, el CPU como tal tiene varios timpos de memoria, una son los registros, memoria cache (con diferentes niveles, y despues la memoria RAM, esto implica que cuando se programa en paralelo, que si yo direcciono una variable a la memoria esta se va a almacenar en el HDD para poder tener acceso mas rapido y así liberar espacio en RAM.
+
+"Concepto de exclusion mutuo"
+
+Programación incrementa, quiere decir que si yo tengo mi programa en serial, no es necesario llevarlo completamente en paralelo, sino que OpenMP permite que las partes secuenciales se queden como estan.
+
+Hay que tener claro que no todo es paralelizable.
+
+El ciclo for es la instrucción tipica que se puede paralelizar, ya que yo realizo esa tarea "n" veces.
+
+pragma = pragmatic information (información práctica)
+
+En fortran "pragma" son comentario, o como si fueran un comentario.
+
+*************************************************************
+
+#pragma omp parallel for
+
+    for  (i=first; i<size; i+=prime) marked [i] = i
+
+*************************************************************
+nota: directiva de paralelización, (parallel for)
+*************************************************************
+
+*************************************************************
+nota: definición de hypertrading para eliminar el porque no es lo mismo correr ne nativo que en HT
+*************************************************************
+
+La condicion es la siguiente: que exista un indice, que exista una condición final valida y que exista un incremento.
+
+Por default el número de hilos que toma mi programa es el número de núcleos que ve el OS, sin embargo yo puedo decirle a mi programa cuantos hilos pongo.
+
+*************************ERROR*******************************
+pagina 6 (error en la parte 1.5 dice void omp_get_num_threads {int t} debe decir void (omp_set_num_thread {int t}
+*************************ERROR*******************************
+
+*************************ERROR*******************************
+pagina 10 antes de 1.6 dice oget_num_threads {t) debe decir omp_set_num_thread {t} ;
+*************************ERROR*******************************
+
+¿for anidado?
+
+la perdida de tiempo que toma el bifurcar/unir la llamaremos "overhead" (sobre carga).
+
+*************************************************************
+
+x(0)=5
+pragma private x
+  do i=0, N-1
+    do j=1, 3
+      x(j)=2.3
+
+*************************************************************
+
+*************************ERROR*******************************
+pagina 12 error en la tabla antes de 1.9 el pragma debe estar dentro y no fuera
+*************************ERROR*******************************
+
+*************************ERROR*******************************
+error en seccion 1.10, debe ser X3 no sum_powers y falta agregar una linea "lastprivate"
+*************************ERROR*******************************
+
+*************************ERROR*******************************
+Figura 1.6 dice "utilizacion de pragma critico" y debe decir "utilización de un pragma critical"
+*************************ERROR*******************************
+
+*************************ERROR*******************************
+figura del tema 1.14 dice fo(j=0; j<n; j++) y debe decir for(j=1; j<n; j++)
+*************************ERROR*******************************
+
+resolver las casillas en forma lineal en lugar de forma saltada hace el codigo mas rápido 
+ej.a(0,0), a(0,1), a(0,2)...a(0,n) en lugar de  a(0,1) b(0,1), c(0,1)...n(0,n)
+
+--**--remondación de la SWAP--**--
+
+en el hardware los bits estan invertidos y hay que alinearlos para que .........
+
+128 en Nvidia, 256 en Xeon y 512 en Phi
+
+schedule dynamic C???
+
+*************************ERROR*******************************
+especificar que la tarea ya se termino en la figura 17.10
+*************************ERROR*******************************
+
+*************************ERROR*******************************
+imagen de la figura 1.11 Monte Carlo esta en otra hoja hay que moverla al ejemplo de pi
+*************************ERROR*******************************
+
+*************************ERROR*******************************
+en la tabla de la pagina 25 antes del tema 1.21 dice omp_sat_num_threads (atoi (argv[2])) ;  debe decir omp_set_num_threads (atoi (argv[2])) ;
+*************************ERROR*******************************
+
+*************************ERROR*******************************
+pagina 26 ultimas 2 lineas de codigo hay que revisarlo
+*************************ERROR*******************************
+
+*************************ERROR*******************************
+dice v = alphra (); y debe decir v = alpha (); en la pagina 29
+X = gamma ( v,w );  debe decir x = gamma ( v,w ); en la pagina 29
+*************************ERROR*******************************
+
+*************************ERROR*******************************
+pagina 30 dice 
+
+#pragma omp sections
+{
+    #pragama omp sections
+
+debe decir en todos los casos 
+
+#pragma omp sections
+{
+    #pragama omp section
+*************************ERROR*******************************
+
+
